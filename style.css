@@ -5,7 +5,10 @@
 }
 
 
-/* font */
+/* error */
+.color_red{
+    color: red;
+}
 
 
 /* header */
@@ -28,7 +31,7 @@
 .contain-form{
     margin-top: 150px;
     height: 250px;
-    width: 250px;
+    width: 450px;
     box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.4);
     display: flex;
 
@@ -36,6 +39,15 @@
 }
 .h2-form{
     text-align: center;
+}
+.form{
+    display: flex;
+    justify-content: center;
+}
+
+.dpf-jc{
+    display: flex;
+    justify-content: center;
 }
 
 .btn{
