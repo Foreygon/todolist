@@ -1,6 +1,6 @@
 
 <?php
-require_once  "_head.php";
+require_once  "./view/_head.php";
 ?>
 
 <title>TodoList</title>
@@ -8,7 +8,7 @@ require_once  "_head.php";
 </head>
 <body>
     <?php
-    require_once "_header.php";
+    require_once "./view/_header.php";
     ?> 
     <main class="contain">
         <div class="contain-form">
@@ -20,22 +20,11 @@ require_once  "_head.php";
             </form>
             <div class="errors dpf-jc">
             <?php 
-            $errors = [
-                'text'=> ''
-            ];
-            if ($_SERVER['REQUEST_METHOD']==='POST'){
-                $todo = filter_var($_POST['text'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-                if (!$todo){
-                    echo $errors['text'] = '<p class="color_red"><strong>Votre saisie contient aucun caractere</strong></p>';
-                } elseif (strlen($todo) <= 5){
-                    echo $errors['text'] = '<p class="color_red"><strong>Votre saisie est trop courte</strong></p>';
-                }
-            }
+            require_once "./outils/_erreur-saisie-todo.php";
             ?>
             </div>
         </div>
     </main>
 <?php
-require_once  "_footer.php";
+require_once  "./view/_footer.php";
 ?>
