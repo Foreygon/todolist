@@ -1,6 +1,7 @@
 
 <?php
 require_once  "./view/_head.php";
+require_once "./outils/_erreur-saisie-todo.php";
 ?>
 
 <title>TodoList</title>
@@ -20,7 +21,7 @@ require_once  "./view/_head.php";
             </form>
             <div class="errors dpf-jc">
             <?php 
-            require_once "./outils/_erreur-saisie-todo.php";
+                echo $errors['text'];
             ?>
             </div>
         </div>
