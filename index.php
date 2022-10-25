@@ -85,13 +85,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             echo "<div>";
 
+                                echo "<form class='suppr' action='/' method='GET'>";
+
                                 echo "<button class='btn-del'>Supprimé</button>";
+
+                                echo "</form>";
 
                             echo "</div>";
 
                             echo "<div>";
 
-                                echo "<button class='btn-end'>Terminer</button>";
+                                echo "<form class='end' action='/' method='GET'>";
+
+                                    echo "<button class='btn-end'>Terminer</button>";
+
+                                echo "</form>";
 
                             echo "</div>";
 
