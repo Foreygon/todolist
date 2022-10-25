@@ -45,12 +45,9 @@
     justify-content: center;
 }
 
-.dpf-jc{
-    display: flex;
-    justify-content: center;
-}
 
-.btn{
+
+.btn-form{
     background-color: blueviolet;
     color: white;
     border: none;
@@ -71,4 +68,64 @@
     color: white;
     padding: 1rem;
     
+}
+
+/* list bdd */
+
+.value-list{
+    
+    width: 200px;
+    margin-right: 8px;
+    padding-left: 5px;
+    border: solid rgb(50, 50, 50) 1px;
+    border-radius: 5px;
+}
+.value-list:hover{
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+
+.contenaire-list{
+    margin: 8px;
+    
+}
+
+.btn-del{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 8px;
+    
+}
+.btn-del:hover{
+    background-color: rgb(220, 120, 120);
+}
+
+.btn-end{
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.btn-end:hover{
+    background-color: rgb(131, 138, 214);
+}
+
+/* flexbox */
+.dpf-jc{
+    display: flex;
+    justify-content: center;
+}
+
+
+.fd-c{
+    flex-direction: column;
+}
+
+.dpf-se{
+    display: flex;
+    justify-content: space-evenly;
 }

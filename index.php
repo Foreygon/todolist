@@ -26,7 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $todo = filter_var($_POST['todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // $stmt = $pdo->prepare("INSERT INTO todo VALUES (DEFAULT, $todo)");
+    // preciser la colone :tache
     $stmt = $pdo->prepare("INSERT INTO todo VALUES (DEFAULT, :tache)");
+
 
 
 
@@ -35,9 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($todo) <= 5) {
         $errors['todo'] = '<p class="color_red"><strong>Votre saisie est trop courte</strong></p>';
     } elseif (!$errors['todo']) {
+        // solution add bindValue
         $stmt->bindValue(':tache', $todo);
         $stmt->execute();
     }
+    $list = $pdo->prepare("SELECT tache FROM todo");
+    $list->execute();
+
+    $resulte = $list->fetchAll();
 }
 
 
@@ -57,13 +64,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="todo" hidden>tu doit faire?</label>
 
                 <input class="input-form" type="text" name="todo" id="todo" placeholder="Tu dois faire?">
-                <button class="btn" type="submit">Ajouter</button>
+                <button class="btn-form" type="submit">Ajouter</button>
             </form>
             <div class="errors dpf-jc">
                 <?php
                 echo $errors['todo'];
                 ?>
             </div>
+
+            <div class="">
+                <?php
+                    foreach ($resulte as $value) {
+                        echo "<div class='contenaire-list dpf-jc'>";
+
+                            echo "<div class='value-list'>";
+
+                                echo $value['tache'];
+                                
+                            echo "</div>";
+
+                            echo "<div>";
+
+                                echo "<button class='btn-del'>Supprimé</button>";
+
+                            echo "</div>";
+
+                            echo "<div>";
+
+                                echo "<button class='btn-end'>Terminer</button>";
+
+                            echo "</div>";
+
+                        echo "</div>";
+                    }
+
+                    ?>
+            </div>
+            
         </div>
     </main>
     <?php
