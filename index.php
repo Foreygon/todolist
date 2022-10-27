@@ -14,11 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $todo = filter_var($_POST['todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    // $stmt = $pdo->prepare("INSERT INTO todo VALUES (DEFAULT, $todo)");
-    // preciser la colone :tache
-    $stmt = $pdo->prepare("INSERT INTO todo VALUES (DEFAULT, :tache)");
-
-
+    $stmt = $pdo->prepare("INSERT INTO todo VALUES (DEFAULT, :tache, 0)");
 
 
     if (!$todo) {

@@ -134,3 +134,8 @@ a{
     text-decoration: none;
     color: white;
 }
+
+/* edit */
+.line{
+    text-decoration: line-through;
+}
