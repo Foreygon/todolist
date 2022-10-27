@@ -2,9 +2,7 @@
                     foreach ($resulte as $value) {
                                     
                                     $class = '';
-                                    // $edit = 0;
-                                    // echo gettype($edit);
-                                    // var_dump($edit);
+                                  
                                     if ($value['done'] === 1){
                                         $class .= 'line';
                                         $bntText = "Annuler";
@@ -12,7 +10,7 @@
                                         $bntText = "Terminer";
                                     }
 
-                        echo "<div class='contenaire-list dpf-jc'>";
+                        echo "<div class='contenaire-list dpf-jc row'>";
 
                             echo "<div class='value-list'>";
 
