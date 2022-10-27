@@ -1,21 +1,10 @@
 <?php
 require_once  "./view/_head.php";
-// require_once "./outils/_erreur-saisie-todo.php";
+// require_once "./tools/_delete.php";
+require_once "./tools/_dbconection.php";
 
 
-$dsn = 'mysql:host=localhost;dbname=todolist';
-$user = 'root';
-$password = '';
 
-try {
-    $pdo = new PDO($dsn, $user, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-    // echo "Connexion réussi";
-} catch (PDOException $e) {
-    echo "connexion échouée : " . $e->getMessage();
-}
 
 
 $errors = ['todo' => ''];
@@ -41,11 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindValue(':tache', $todo);
         $stmt->execute();
     }
-    $list = $pdo->prepare("SELECT tache FROM todo");
+
+}
+    $list = $pdo->prepare("SELECT * FROM todo");
     $list->execute();
 
-    $resulte = $list->fetchAll();
-}
+    $resulte = $list->fetchAll(); 
 
 
 ?>
@@ -71,42 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo $errors['todo'];
                 ?>
             </div>
+            
 
             <div class="">
                 <?php
-                    foreach ($resulte as $value) {
-                        echo "<div class='contenaire-list dpf-jc'>";
+                    require_once "./view/_contain-list.php"
 
-                            echo "<div class='value-list'>";
-
-                                echo $value['tache'];
-                                
-                            echo "</div>";
-
-                            echo "<div>";
-
-                                echo "<form class='suppr' action='/' method='GET'>";
-
-                                echo "<button class='btn-del'>Supprimé</button>";
-
-                                echo "</form>";
-
-                            echo "</div>";
-
-                            echo "<div>";
-
-                                echo "<form class='end' action='/' method='GET'>";
-
-                                    echo "<button class='btn-end'>Terminer</button>";
-
-                                echo "</form>";
-
-                            echo "</div>";
-
-                        echo "</div>";
-                    }
-
-                    ?>
+                ?>
             </div>
             
         </div>
